@@ -98,29 +98,23 @@
 			<xsl:when test="$type='Unique ID'">{rs:normalize-id-type(replace($field_name, "_id$", "_uid"))}</xsl:when>
 			<xsl:when test="$type='ID'">{rs:normalize-id-type($field_name)}</xsl:when>
 
-			<xsl:when test="starts-with($type, 'Foreign ID referencing')">()</xsl:when>
+			<xsl:when test="starts-with($type, 'Foreign ID referencing')">
+				<!--
+					We're taking a shortcut with the `[1]` because
+					right now all foreign keys reference the same key and not any pairs
+					[todo!]
+				-->
+				<xsl:variable name="split-key" select="rs:get-split-foreign-keys($type)[1]"/>
+					<xsl:choose>
 
-			<!-- <xsl:when test="rs:is-foreign-id($type)">
-				<xsl:variable name="split-keys" select="(rs:get-split-foreign-keys($type)/type)[1]"/>
-				<xsl:choose>
-
-					<xsl:when test="$unique-id-map/field[name=$split-keys and type/name='Unique ID']">
-						<xsl:value-of select="rs:normalize-id-type(replace($split-keys, '_id$', '_uid'))"/>
-					</xsl:when>
-					<xsl:otherwise>
-						<xsl:value-of select="rs:normalize-id-type($split-keys)"/>
-					</xsl:otherwise>
-				</xsl:choose>
-			</xsl:when> -->
-								<!--
-						We're taking a shortcut with the `[1]` because
-						right now all foreign keys reference the same key and not any pairs
-						[revisit!]
-					-->
-			<!-- <xsl:when test="rs:is-foreign-id($type)">
-				<xsl:variable name="split-keys" select="rs:get-split-foreign-keys($type)/type"/>
-				<xsl:value-of select="rs:normalize-id-type($split-keys[1])"/>
-			</xsl:when> -->
+						<xsl:when test="$unique-id-map/field[name=$split-key/type and type/name='Unique ID']">
+							<xsl:value-of select="rs:normalize-id-type(replace($split-key/type, '_id$', '_uid'))"/>
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:value-of select="rs:normalize-id-type($split-key/type)"/>
+						</xsl:otherwise>
+					</xsl:choose>
+			</xsl:when>
 
 			<!-- TODO <xsl:when test="$type='Foreign ID'">todo!("Foreign ID"); {rs:normalize-id-type(normalize-space(substring-after($type, "Foreign ID referencing")))}</xsl:when> -->
 			<!-- TODO --> <!-- <xsl:when test="starts-with($type, 'Foreign ID')">todo!("Foreign ID"); {rs:normalize-id-type(normalize-space(substring-after($type, "Foreign ID referencing")))}</xsl:when> -->
