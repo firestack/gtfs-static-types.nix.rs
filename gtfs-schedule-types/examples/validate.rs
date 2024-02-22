@@ -6,10 +6,6 @@ use gtfs_schedule_types::{Dataset, Result};
 fn main() -> Result<()> {
 	let schedule = Dataset::from("./feed");
 
-	println!(
-		"stop_times:           {:>10?}",
-		Some(schedule.stop_times.len())
-	);
 	println!("agency:               {:>10?}", Some(schedule.agency.len()));
 	println!(
 		"feed_info:            {:>10?}",

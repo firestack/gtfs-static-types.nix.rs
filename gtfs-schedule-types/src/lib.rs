@@ -18,14 +18,18 @@ impl<T: AsRef<Path>> From<T> for Dataset {
 	fn from(dataset_path: T) -> Self {
 		let dataset_path = dataset_path.as_ref();
 		Self {
-			agency: parse_csv(&dataset_path.join("agency.txt")).expect("failure parsing file"),
-			feed_info: parse_csv(&dataset_path.join("feed_info.txt"))
-				.expect("failure parsing file"),
-			routes: parse_csv(&dataset_path.join("routes.txt")).expect("failure parsing file"),
+			agency: parse_csv(&dataset_path.join("agency.txt"))
+				.expect("failure parsing agency-record"),
+			feed_info: parse_csv(&dataset_path.join("feed_info.txt")).unwrap_or_else(|_| vec![]),
+			// .expect("failure parsing feed_info-record"),
+			routes: parse_csv(&dataset_path.join("routes.txt"))
+				.expect("failure parsing routes-record"),
 			stop_times: parse_csv(&dataset_path.join("stop_times.txt"))
-				.expect("failure parsing file"),
-			stops: parse_csv(&dataset_path.join("stops.txt")).expect("failure parsing file"),
-			trips: parse_csv(&dataset_path.join("trips.txt")).expect("failure parsing file"),
+				.expect("failure parsing stop_times-record"),
+			stops: parse_csv(dbg!(&dataset_path.join("stops.txt")))
+				.expect("failure parsing stops-record"),
+			trips: parse_csv(&dataset_path.join("trips.txt"))
+				.expect("failure parsing trips-record"),
 
 			areas: parse_csv(&dataset_path.join("areas.txt")).ok(),
 			attributions: parse_csv(&dataset_path.join("attributions.txt")).ok(),
