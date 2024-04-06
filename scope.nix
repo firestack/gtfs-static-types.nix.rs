@@ -4,11 +4,10 @@
 , craneLib
 }:
 makeScope newScope (self: {
- 	inherit craneLib;
- 
- 	gtfs = self.callPackage ./gtfs-sources.nix {
+	inherit craneLib;
 
-	gtfs-srcs = [
+	gtfs = self.callPackage ./gtfs-sources.nix {
+		gtfs-srcs = [
 			self.mbta-gtfs
 			self.denver-rtd-gtfs
 			self.nyc-bronx-gtfs

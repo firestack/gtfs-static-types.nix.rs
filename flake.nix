@@ -2,6 +2,7 @@
 	description = "GTFS Types from GTFS Schedule Specification Webpage";
 
 	nixConfig.allow-import-from-derivation = true;
+
 	inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 	inputs.devshell.url = "github:numtide/devshell";
 	inputs.flake-parts.url = "github:hercules-ci/flake-parts";
@@ -30,6 +31,7 @@
 					makeScope = pkgs.lib.makeScope;
 					craneLib = crane.lib.${system};
 				};
+				legacyPackages.craneLib = crane.lib.${system};
 
 				packages = {
 					default = self'.packages.gtfs-schedule-types-rs-doc;
