@@ -10,6 +10,7 @@
 # GTFS Distribution Name,
 # 	e.g., `MBTA`, `nyc-bronx`, `nyc-manhattan`
 , name
+, src-name ? name
 , runCommand
 
 , ...
@@ -24,7 +25,7 @@ let
 		# Prioritze `src` over `url` & `hash`
 		if args.src or null == null
 		then fetchzip {
-			name = "GTFS Schedule ${name}";
+			name = "GTFS Schedule ${src-name}";
 
 			inherit (args) url hash;
 
