@@ -20,7 +20,7 @@ assert args.src or null == null ->
 	&& args.url != null
 	&& args.hash != null;
 let
-	src' =
+	src =
 		# Prioritze `src` over `url` & `hash`
 		if args.src or null == null
 		then fetchzip {
@@ -31,14 +31,12 @@ let
 			stripRoot = false;
 		}
 		else args.src;
+
+	rootDirectory = "$out/share/gtfs/";
 in
 
-runCommand "${name}-gtfs" {} (let
-	rootDirectory = "$out/share/gtfs/";
-in lib.concatLines [
-	"set -ex"
-	"mkdir -p $out/share/gtfs"
-	"ln -sfT ${src'} ${rootDirectory}/${name}"
-	"set +x"
+runCommand "${name}-gtfs" {} (lib.concatLines [
+	"mkdir -p ${rootDirectory}"
+	"ln -sfT ${src} ${rootDirectory}/${name}"
 ])
 

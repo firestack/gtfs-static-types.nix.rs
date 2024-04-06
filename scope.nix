@@ -12,13 +12,15 @@ makeScope newScope (self: {
 		gtfs-srcs = [
 			self.mbta-gtfs
 			self.denver-rtd-gtfs
+			self.nyc-bronx-gtfs
+			self.nyc-manhattan-gtfs
 		];
 	};
 
-	# mbta-gtfs = self.callPackage ./mbta-gtfs.nix {};
 	mbta-gtfs = self.callPackage ./gtfs.nix {
-		src = self.callPackage ./mbta-gtfs.nix {};
-		name = "mbta";
+		name = "mbta-2024-01-11";
+		url = "https://cdn.mbtace.com/archive/20240111.zip";
+		hash = "sha256-Nvo740l+eo/vnHzZ0qOIJwsUGrp/4CPDxTpXhVlrLnI=";
 	};
 
 	denver-rtd-gtfs = self.callPackage ./gtfs.nix {
@@ -27,26 +29,17 @@ makeScope newScope (self: {
 		hash = "sha256-b9BqQYwlduf7TeUC/qtlqqfReUuqz1iZDidqsr7AgKs=";
 	};
 
-	# denver-rtd-gtfs = self.callPackage ./gtfs.nix {
-	# 	name = "denver-rtd"; 
-	# 	src = self.callPackage ({ fetchzip }: fetchzip {
-	# 		url = "https://www.rtd-denver.com/files/gtfs/google_transit.zip";
-	# 		stripRoot = false;
-	# 		hash = "sha256-5VjT/dxxEAodkYF/228ENXonD/v4WnCjx1aqvt43KS0=";
-	# 	}) {};
-	# };
-
-	nyc-bronx-gtfs = self.callPackage ({ fetchzip }: fetchzip {
+	nyc-bronx-gtfs = self.callPackage ./gtfs.nix {
+		name = "nyc-bronx-gtfs";
 		url = "http://web.mta.info/developers/data/nyct/bus/google_transit_bronx.zip";
-		stripRoot = false;
-		hash = "sha256-x/n2wT5Vct7U6ucevCDftW4GojaFuV0rQdIAJ7gp5P4=";
-	}) {};
+		hash = "sha256-GEQ3mwj543yCN4mNh9gsi3zjHaGFfLqNdOVx/EEMGso=";
+	};
 
-	nyc-manhattan-gtfs = self.callPackage ({ fetchzip }: fetchzip {
+	nyc-manhattan-gtfs = self.callPackage ./gtfs.nix {
+		name = "nyc-manhattan-gtfs";
 		url = "http://web.mta.info/developers/data/nyct/bus/google_transit_manhattan.zip";
-		stripRoot = false;
-		hash = "sha256-C7In6exqbnPLYPIsB9t11x3zfmaWipYHa2P778rL+ZU=";
-	}) {};
+		hash = "sha256-QHbAWWbTdMbkgdKh5FY3b4odvDpIYc//xU9LfHJNL/g=";
+	};
 
 	gtfs-schedule-html = self.callPackage ./gtfs-schedule-xslt/gtfs-schedule-html.nix {};
 
