@@ -2,14 +2,13 @@
 , makeScope
 , newScope
 , craneLib
-, stdenv
-, libiconv
 }:
 makeScope newScope (self: {
-	inherit craneLib;
+ 	inherit craneLib;
+ 
+ 	gtfs = self.callPackage ./gtfs-sources.nix {
 
-	gtfs = self.callPackage ./gtfs-sources.nix {
-		gtfs-srcs = [
+	gtfs-srcs = [
 			self.mbta-gtfs
 			self.denver-rtd-gtfs
 			self.nyc-bronx-gtfs
@@ -51,26 +50,20 @@ makeScope newScope (self: {
 	gtfs-schedule-generated-rs-src = self.callPackage ./gtfs-schedule-xslt/gtfs-schedule-generated-rs-src.nix {};
 
 	gtfs-schedule-types-rs-common-args = {
-		src = self.callPackage ./gtfs-schedule-types/combined-srcs.nix {
-			inherit craneLib;
-		};
+		src = self.callPackage ./gtfs-schedule-types/combined-srcs.nix {};
 
 		strictDeps = true;
 		doCheck = false;
 	};
-	gtfs-schedule-types-rs = self.callPackage (./gtfs-schedule-types) {
-		inherit craneLib;
-	};
 
-	gtfs-schedule-types-rs-doc = self.callPackage (./gtfs-schedule-types/rustdoc.nix) {
-		inherit craneLib;
-	};
+	gtfs-schedule-types-rs = self.callPackage (./gtfs-schedule-types) {};
+
+	gtfs-schedule-types-rs-doc = self.callPackage (./gtfs-schedule-types/rustdoc.nix) {};
 
 	gtfs-schedule-types-rs-cargo-artifacts = self.callPackage ./gtfs-schedule-types/cargo-artifacts.nix {
 		gtfs-schedule-types-rs-common-args = {
 			src = craneLib.cleanCargoSource (craneLib.path ./gtfs-schedule-types);
 			strictDeps = true;
 		};
-		inherit craneLib;
 	};
 })

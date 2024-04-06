@@ -26,14 +26,16 @@
 			];
 
 			perSystem = { pkgs, lib, self', system, ... }: {
+				legacyPackages.scope = pkgs.callPackage ./scope.nix {
+					makeScope = pkgs.lib.makeScope;
+					craneLib = crane.lib.${system};
+				};
+
 				packages = {
 					default = self'.packages.gtfs-schedule-types-rs-doc;
 				} // (
 					{
-						inherit (pkgs.callPackage ./scope.nix {
-							makeScope = pkgs.lib.makeScope;
-							craneLib = crane.lib.${system};
-						})
+						inherit (self'.legacyPackages.scope)
 							gtfs
 							mbta-gtfs
 							gtfs-schedule-html
