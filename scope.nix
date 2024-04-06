@@ -7,8 +7,11 @@
 }:
 makeScope newScope (self: {
 	inherit craneLib;
-
-	mbta-gtfs = self.callPackage ./mbta-gtfs.nix {};
+	# mbta-gtfs = self.callPackage ./mbta-gtfs.nix {};
+	mbta-gtfs = self.callPackage ./gtfs.nix {
+		src = self.callPackage ./mbta-gtfs.nix {};
+		name = "mbta";
+	};
 
 	denver-rtd-gtfs = self.callPackage ({ fetchzip }: fetchzip {
 		url = "https://www.rtd-denver.com/files/gtfs/google_transit.zip";
