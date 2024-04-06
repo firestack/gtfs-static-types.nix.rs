@@ -189,6 +189,11 @@ pub struct {rs:struct-name-from-filename(name)} {{<xsl:apply-templates
 	mode="struct"
 	select="fields/field"
 />}}
+
+#[cfg(feature = "from-dataset")]
+impl crate::DatasetFilename for {rs:struct-name-from-filename(name)} {{
+	const FILENAME: &amp;'static str = "{name}";
+}}
 </xsl:template>
 
 <xsl:template mode="struct" match="field" >
