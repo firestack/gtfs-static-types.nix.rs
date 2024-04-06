@@ -18,7 +18,8 @@ makeScope newScope (self: {
 	};
 
 	mbta-gtfs = self.callPackage ./gtfs.nix {
-		name = "mbta-2024-01-11";
+		name = "mbta";
+		src-name = "mbta-2024-01-11";
 		url = "https://cdn.mbtace.com/archive/20240111.zip";
 		hash = "sha256-Nvo740l+eo/vnHzZ0qOIJwsUGrp/4CPDxTpXhVlrLnI=";
 	};
