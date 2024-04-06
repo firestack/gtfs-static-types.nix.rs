@@ -2,107 +2,78 @@
 //!
 
 use gtfs_schedule_types::{Dataset, Result};
+use std::io::{stdout, Write};
 
 fn main() -> Result<()> {
-	let schedule = Dataset::from("./feed");
+	let schedule = Dataset::try_from("./feed".as_ref())?;
 
-	println!(
-		"stop_times:           {:>10?}",
-		Some(schedule.stop_times.len())
-	);
-	println!("agency:               {:>10?}", Some(schedule.agency.len()));
-	println!(
-		"feed_info:            {:>10?}",
-		Some(schedule.feed_info.len())
-	);
-	println!("routes:               {:>10?}", Some(schedule.routes.len()));
-	println!(
-		"stop_times:           {:>10?}",
-		Some(schedule.stop_times.len())
-	);
-	println!("stops:                {:>10?}", Some(schedule.stops.len()));
-	println!("trips:                {:>10?}", Some(schedule.trips.len()));
+	let mut lock = stdout().lock();
 
-	println!(
-		"areas:                {:>10?}",
-		schedule.areas.map(|v| v.len())
-	);
-	println!(
-		"attributions:         {:>10?}",
-		schedule.attributions.map(|v| v.len())
-	);
-	println!(
-		"calendar_dates:       {:>10?}",
-		schedule.calendar_dates.map(|v| v.len())
-	);
-	println!(
-		"calendar:             {:>10?}",
-		schedule.calendar.map(|v| v.len())
-	);
-	println!(
-		"fare_attributes:      {:>10?}",
-		schedule.fare_attributes.map(|v| v.len())
-	);
-	println!(
-		"fare_leg_rules:       {:>10?}",
-		schedule.fare_leg_rules.map(|v| v.len())
-	);
-	println!(
-		"fare_media:           {:>10?}",
-		schedule.fare_media.map(|v| v.len())
-	);
-	println!(
-		"fare_products:        {:>10?}",
-		schedule.fare_products.map(|v| v.len())
-	);
-	println!(
-		"fare_rules:           {:>10?}",
-		schedule.fare_rules.map(|v| v.len())
-	);
-	println!(
-		"fare_transfer_rules:  {:>10?}",
-		schedule.fare_transfer_rules.map(|v| v.len())
-	);
-	println!(
-		"frequencies:          {:>10?}",
-		schedule.frequencies.map(|v| v.len())
-	);
-	println!(
-		"levels:               {:>10?}",
-		schedule.levels.map(|v| v.len())
-	);
-	println!(
-		"networks:             {:>10?}",
-		schedule.networks.map(|v| v.len())
-	);
-	println!(
-		"pathways:             {:>10?}",
-		schedule.pathways.map(|v| v.len())
-	);
-	println!(
-		"route_networks:       {:>10?}",
-		schedule.route_networks.map(|v| v.len())
-	);
-	println!(
-		"shapes:               {:>10?}",
-		schedule.shapes.map(|v| v.len())
-	);
-	println!(
-		"stop_areas:           {:>10?}",
-		schedule.stop_areas.map(|v| v.len())
-	);
-	println!(
-		"timeframes:           {:>10?}",
-		schedule.timeframes.map(|v| v.len())
-	);
-	println!(
-		"transfers:            {:>10?}",
-		schedule.transfers.map(|v| v.len())
-	);
-	println!(
-		"translations:         {:>10?}",
-		schedule.translations.map(|v| v.len())
-	);
+	write!(
+		lock,
+		r#"
+agency	{}
+feed_info	{}
+routes	{}
+stop_times	{}
+stops	{}
+trips	{}
+areas	{}
+attributions	{}
+calendar_dates	{}
+calendar	{}
+fare_attributes	{}
+fare_leg_rules	{}
+fare_media	{}
+fare_products	{}
+fare_rules	{}
+fare_transfer_rules	{}
+frequencies	{}
+levels	{}
+networks	{}
+pathways	{}
+route_networks	{}
+shapes	{}
+stop_areas	{}
+timeframes	{}
+transfers	{}
+translations	{}
+"#,
+		schedule.agency.len(),
+		display_optional_table(schedule.feed_info),
+		schedule.routes.len(),
+		schedule.stop_times.len(),
+		schedule.stops.len(),
+		schedule.trips.len(),
+		display_optional_table(schedule.areas),
+		display_optional_table(schedule.attributions),
+		display_optional_table(schedule.calendar_dates),
+		display_optional_table(schedule.calendar),
+		display_optional_table(schedule.fare_attributes),
+		display_optional_table(schedule.fare_leg_rules),
+		display_optional_table(schedule.fare_media),
+		display_optional_table(schedule.fare_products),
+		display_optional_table(schedule.fare_rules),
+		display_optional_table(schedule.fare_transfer_rules),
+		display_optional_table(schedule.frequencies),
+		display_optional_table(schedule.levels),
+		display_optional_table(schedule.networks),
+		display_optional_table(schedule.pathways),
+		display_optional_table(schedule.route_networks),
+		display_optional_table(schedule.shapes),
+		display_optional_table(schedule.stop_areas),
+		display_optional_table(schedule.timeframes),
+		display_optional_table(schedule.transfers),
+		display_optional_table(schedule.translations),
+	)?;
 
 	Ok(())
+}
+const NONE_STR: &'static str = "None";
+
+use std::borrow::Cow;
+fn display_optional_table<'a, T>(table: Option<Vec<T>>) -> Cow<'a, str> {
+	table
+		.map(|v| Cow::from(v.len().to_string()))
+		.unwrap_or(Cow::from(NONE_STR))
 }
