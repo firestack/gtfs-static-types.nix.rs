@@ -7,6 +7,13 @@
 }:
 makeScope newScope (self: {
 	inherit craneLib;
+
+	gtfs = self.callPackage ./gtfs-sources.nix {
+		gtfs-srcs = [
+			self.mbta-gtfs
+		];
+	};
+
 	# mbta-gtfs = self.callPackage ./mbta-gtfs.nix {};
 	mbta-gtfs = self.callPackage ./gtfs.nix {
 		src = self.callPackage ./mbta-gtfs.nix {};
