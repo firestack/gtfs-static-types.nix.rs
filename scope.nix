@@ -11,6 +11,7 @@ makeScope newScope (self: {
 	gtfs = self.callPackage ./gtfs-sources.nix {
 		gtfs-srcs = [
 			self.mbta-gtfs
+			self.denver-rtd-gtfs
 		];
 	};
 
@@ -20,11 +21,20 @@ makeScope newScope (self: {
 		name = "mbta";
 	};
 
-	denver-rtd-gtfs = self.callPackage ({ fetchzip }: fetchzip {
+	denver-rtd-gtfs = self.callPackage ./gtfs.nix {
+		name = "denver-rtd";
 		url = "https://www.rtd-denver.com/files/gtfs/google_transit.zip";
-		stripRoot = false;
-		hash = "sha256-5VjT/dxxEAodkYF/228ENXonD/v4WnCjx1aqvt43KS0=";
-	}) {};
+		hash = "sha256-b9BqQYwlduf7TeUC/qtlqqfReUuqz1iZDidqsr7AgKs=";
+	};
+
+	# denver-rtd-gtfs = self.callPackage ./gtfs.nix {
+	# 	name = "denver-rtd"; 
+	# 	src = self.callPackage ({ fetchzip }: fetchzip {
+	# 		url = "https://www.rtd-denver.com/files/gtfs/google_transit.zip";
+	# 		stripRoot = false;
+	# 		hash = "sha256-5VjT/dxxEAodkYF/228ENXonD/v4WnCjx1aqvt43KS0=";
+	# 	}) {};
+	# };
 
 	nyc-bronx-gtfs = self.callPackage ({ fetchzip }: fetchzip {
 		url = "http://web.mta.info/developers/data/nyct/bus/google_transit_bronx.zip";
