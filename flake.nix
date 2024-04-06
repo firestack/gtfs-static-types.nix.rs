@@ -40,7 +40,10 @@
 							gtfs-schedule-xml
 							gtfs-schedule-generated-rs-src
 							gtfs-schedule-types-rs
-							gtfs-schedule-types-rs-doc;
+							gtfs-schedule-types-rs-doc
+							denver-rtd-gtfs
+							nyc-bronx-gtfs
+							nyc-manhattan-gtfs;
 					}
 				);
 
