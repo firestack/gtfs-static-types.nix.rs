@@ -34,6 +34,7 @@
 							makeScope = pkgs.lib.makeScope;
 							craneLib = crane.lib.${system};
 						})
+							gtfs
 							mbta-gtfs
 							gtfs-schedule-html
 							gtfs-schedule-xhtml
