@@ -1,9 +1,9 @@
 { lib
-	, makeScope
-	, newScope
-	, craneLib
-	, stdenv
-	, libiconv
+, makeScope
+, newScope
+, craneLib
+, stdenv
+, libiconv
 }:
 makeScope newScope (self: {
 	inherit craneLib;
