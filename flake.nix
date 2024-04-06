@@ -33,22 +33,20 @@
 
 				packages = {
 					default = self'.packages.gtfs-schedule-types-rs-doc;
-				} // (
-					{
-						inherit (self'.legacyPackages.scope)
-							gtfs
-							mbta-gtfs
-							gtfs-schedule-html
-							gtfs-schedule-xhtml
-							gtfs-schedule-xml
-							gtfs-schedule-generated-rs-src
-							gtfs-schedule-types-rs
-							gtfs-schedule-types-rs-doc
-							denver-rtd-gtfs
-							nyc-bronx-gtfs
-							nyc-manhattan-gtfs;
-					}
-				);
+				} // (builtins.removeAttrs self'.legacyPackages.scope [
+					# scope outputs
+					"callPackage"
+					"newScope"
+					"override"
+					"overrideDerivation"
+					"overrideScope"
+					"overrideScope'"
+					"packages"
+					
+					# Ignored Inputs and Transiant Attributes
+					"craneLib"
+					"gtfs-schedule-types-rs-common-args"
+				]);
 
 				devshells.default = {
 					packages = [
