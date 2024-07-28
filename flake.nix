@@ -60,6 +60,7 @@
 						pkgs.clippy
 						pkgs.rustfmt
 						pkgs.html-tidy
+						(pkgs.sqlite.override {interactive = true;})
 					];
 
 					commands = [{
