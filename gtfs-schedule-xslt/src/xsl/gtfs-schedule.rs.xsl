@@ -205,6 +205,9 @@ pub type <xsl:value-of select="$typeName"/> = <xsl:value-of select="rs:map-gtfs-
 <xsl:template name="records">
 use crate::field_types::*;
 
+#[cfg(feature = "sql")]
+use sea_orm::entity::prelude::*;
+
 /* Structs */
 <xsl:apply-templates mode="struct" select="//records/record" />
 </xsl:template>
@@ -218,9 +221,11 @@ use crate::field_types::*;
 {serialize(description/x:body/node(), $xml-serialize-opts)}
 <!-- <xsl:copy-of select="serialize(description/x:body/*, <xsl:output method='html' indent='yes' />)"/> -->
  */
-#[derive(Clone)]
+#[derive(Clone, PartialEq)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
+#[cfg_attr(feature = "sql", sea_orm(table_name="{name}"))]
 pub struct {rs:struct-name-from-filename(name)} {{<xsl:apply-templates
 	mode="struct"
 	select="fields/field"

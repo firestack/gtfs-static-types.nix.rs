@@ -1,6 +1,9 @@
 
 use crate::field_types::*;
 
+#[cfg(feature = "sql")]
+use sea_orm::entity::prelude::*;
+
 /* Structs */
 
 /** `agency.txt`
@@ -11,9 +14,11 @@ use crate::field_types::*;
 
 
  */
-#[derive(Clone)]
+#[derive(Clone, PartialEq)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
+#[cfg_attr(feature = "sql", sea_orm(table_name="agency.txt"))]
 pub struct Agency {
 	/** Record: __Conditionally Required__
 
@@ -73,9 +78,11 @@ pub struct Agency {
 
 
  */
-#[derive(Clone)]
+#[derive(Clone, PartialEq)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
+#[cfg_attr(feature = "sql", sea_orm(table_name="stops.txt"))]
 pub struct Stops {
 	/** Record: __Required__
 
@@ -177,9 +184,11 @@ pub struct Stops {
 
 
  */
-#[derive(Clone)]
+#[derive(Clone, PartialEq)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
+#[cfg_attr(feature = "sql", sea_orm(table_name="routes.txt"))]
 pub struct Routes {
 	/** Record: __Required__
 
@@ -269,9 +278,11 @@ pub struct Routes {
 
 
  */
-#[derive(Clone)]
+#[derive(Clone, PartialEq)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
+#[cfg_attr(feature = "sql", sea_orm(table_name="trips.txt"))]
 pub struct Trips {
 	/** Record: __Required__
 
@@ -343,9 +354,11 @@ pub struct Trips {
 
 
  */
-#[derive(Clone)]
+#[derive(Clone, PartialEq)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
+#[cfg_attr(feature = "sql", sea_orm(table_name="stop_times.txt"))]
 pub struct StopTimes {
 	/** Record: __Required__
 
@@ -458,9 +471,11 @@ pub struct StopTimes {
 
 
  */
-#[derive(Clone)]
+#[derive(Clone, PartialEq)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
+#[cfg_attr(feature = "sql", sea_orm(table_name="calendar.txt"))]
 pub struct Calendar {
 	/** Record: __Required__
 
@@ -532,9 +547,11 @@ pub struct Calendar {
 
 
  */
-#[derive(Clone)]
+#[derive(Clone, PartialEq)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
+#[cfg_attr(feature = "sql", sea_orm(table_name="calendar_dates.txt"))]
 pub struct CalendarDates {
 	/** Record: __Required__
 
@@ -563,9 +580,11 @@ pub struct CalendarDates {
 
 
  */
-#[derive(Clone)]
+#[derive(Clone, PartialEq)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
+#[cfg_attr(feature = "sql", sea_orm(table_name="fare_attributes.txt"))]
 pub struct FareAttributes {
 	/** Record: __Required__
 
@@ -619,9 +638,11 @@ pub struct FareAttributes {
 
 
  */
-#[derive(Clone)]
+#[derive(Clone, PartialEq)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
+#[cfg_attr(feature = "sql", sea_orm(table_name="fare_rules.txt"))]
 pub struct FareRules {
 	/** Record: __Required__
 
@@ -662,9 +683,11 @@ pub struct FareRules {
 
 
  */
-#[derive(Clone)]
+#[derive(Clone, PartialEq)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
+#[cfg_attr(feature = "sql", sea_orm(table_name="timeframes.txt"))]
 pub struct Timeframes {
 	/** Record: __Required__
 
@@ -699,9 +722,11 @@ pub struct Timeframes {
 
 
  */
-#[derive(Clone)]
+#[derive(Clone, PartialEq)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
+#[cfg_attr(feature = "sql", sea_orm(table_name="fare_media.txt"))]
 pub struct FareMedia {
 	/** Record: __Required__
 
@@ -731,9 +756,11 @@ pub struct FareMedia {
 
 
  */
-#[derive(Clone)]
+#[derive(Clone, PartialEq)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
+#[cfg_attr(feature = "sql", sea_orm(table_name="fare_products.txt"))]
 pub struct FareProducts {
 	/** Record: __Required__
 
@@ -774,9 +801,11 @@ pub struct FareProducts {
 
 
  */
-#[derive(Clone)]
+#[derive(Clone, PartialEq)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
+#[cfg_attr(feature = "sql", sea_orm(table_name="fare_leg_rules.txt"))]
 pub struct FareLegRules {
 	/** Record: __Optional__
 
@@ -835,9 +864,11 @@ pub struct FareLegRules {
 
 
  */
-#[derive(Clone)]
+#[derive(Clone, PartialEq)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
+#[cfg_attr(feature = "sql", sea_orm(table_name="fare_transfer_rules.txt"))]
 pub struct FareTransferRules {
 	/** Record: __Optional__
 
@@ -890,9 +921,11 @@ pub struct FareTransferRules {
 
 
  */
-#[derive(Clone)]
+#[derive(Clone, PartialEq)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
+#[cfg_attr(feature = "sql", sea_orm(table_name="areas.txt"))]
 pub struct Areas {
 	/** Record: __Required__
 
@@ -916,9 +949,11 @@ pub struct Areas {
 
 
  */
-#[derive(Clone)]
+#[derive(Clone, PartialEq)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
+#[cfg_attr(feature = "sql", sea_orm(table_name="stop_areas.txt"))]
 pub struct StopAreas {
 	/** Record: __Required__
 
@@ -941,9 +976,11 @@ pub struct StopAreas {
 
 
  */
-#[derive(Clone)]
+#[derive(Clone, PartialEq)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
+#[cfg_attr(feature = "sql", sea_orm(table_name="networks.txt"))]
 pub struct Networks {
 	/** Record: __Required__
 
@@ -967,9 +1004,11 @@ pub struct Networks {
 
 
  */
-#[derive(Clone)]
+#[derive(Clone, PartialEq)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
+#[cfg_attr(feature = "sql", sea_orm(table_name="route_networks.txt"))]
 pub struct RouteNetworks {
 	/** Record: __Required__
 
@@ -993,9 +1032,11 @@ pub struct RouteNetworks {
 
 
  */
-#[derive(Clone)]
+#[derive(Clone, PartialEq)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
+#[cfg_attr(feature = "sql", sea_orm(table_name="shapes.txt"))]
 pub struct Shapes {
 	/** Record: __Required__
 
@@ -1036,9 +1077,11 @@ pub struct Shapes {
 
 
  */
-#[derive(Clone)]
+#[derive(Clone, PartialEq)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
+#[cfg_attr(feature = "sql", sea_orm(table_name="frequencies.txt"))]
 pub struct Frequencies {
 	/** Record: __Required__
 
@@ -1079,9 +1122,11 @@ pub struct Frequencies {
 
 
  */
-#[derive(Clone)]
+#[derive(Clone, PartialEq)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
+#[cfg_attr(feature = "sql", sea_orm(table_name="transfers.txt"))]
 pub struct Transfers {
 	/** Record: __Conditionally Required__
 
@@ -1140,9 +1185,11 @@ pub struct Transfers {
 
 
  */
-#[derive(Clone)]
+#[derive(Clone, PartialEq)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
+#[cfg_attr(feature = "sql", sea_orm(table_name="pathways.txt"))]
 pub struct Pathways {
 	/** Record: __Required__
 
@@ -1226,9 +1273,11 @@ pub struct Pathways {
 
 
  */
-#[derive(Clone)]
+#[derive(Clone, PartialEq)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
+#[cfg_attr(feature = "sql", sea_orm(table_name="levels.txt"))]
 pub struct Levels {
 	/** Record: __Required__
 
@@ -1258,9 +1307,11 @@ pub struct Levels {
 
 
  */
-#[derive(Clone)]
+#[derive(Clone, PartialEq)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
+#[cfg_attr(feature = "sql", sea_orm(table_name="location_groups.txt"))]
 pub struct LocationGroups {
 	/** Record: __Required__
 
@@ -1284,9 +1335,11 @@ pub struct LocationGroups {
 
 
  */
-#[derive(Clone)]
+#[derive(Clone, PartialEq)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
+#[cfg_attr(feature = "sql", sea_orm(table_name="location_group_stops.txt"))]
 pub struct LocationGroupStops {
 	/** Record: __Required__
 
@@ -1309,9 +1362,11 @@ pub struct LocationGroupStops {
 
 
  */
-#[derive(Clone)]
+#[derive(Clone, PartialEq)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
+#[cfg_attr(feature = "sql", sea_orm(table_name="booking_rules.txt"))]
 pub struct BookingRules {
 	/** Record: __Required__
 
@@ -1413,9 +1468,11 @@ pub struct BookingRules {
 
 
  */
-#[derive(Clone)]
+#[derive(Clone, PartialEq)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
+#[cfg_attr(feature = "sql", sea_orm(table_name="translations.txt"))]
 pub struct Translations {
 	/** Record: __Required__
 
@@ -1468,9 +1525,11 @@ pub struct Translations {
 
 
  */
-#[derive(Clone)]
+#[derive(Clone, PartialEq)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
+#[cfg_attr(feature = "sql", sea_orm(table_name="feed_info.txt"))]
 pub struct FeedInfo {
 	/** Record: __Required__
 
@@ -1535,9 +1594,11 @@ pub struct FeedInfo {
 
 
  */
-#[derive(Clone)]
+#[derive(Clone, PartialEq)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
+#[cfg_attr(feature = "sql", sea_orm(table_name="attributions.txt"))]
 pub struct Attributions {
 	/** Record: __Optional__
 
