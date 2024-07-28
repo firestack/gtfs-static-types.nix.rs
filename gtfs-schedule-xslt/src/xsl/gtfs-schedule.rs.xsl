@@ -224,14 +224,17 @@ use crate::field_types::*;
 pub struct {rs:struct-name-from-filename(name)} {{<xsl:apply-templates
 	mode="struct"
 	select="fields/field"
-/>}}
+>
+	<xsl:with-param name="primary-key" select="primary-key"/>
+</xsl:apply-templates>}}
 </xsl:template>
 
-<xsl:template mode="struct" match="field" >
+<xsl:template mode="struct" match="field" ><xsl:param name="primary-key"/>
 	/** Record: __{presence}__
-
 {serialize(description/x:body/node(), $xml-serialize-opts)}
 	*/
+	<xsl:if test="$primary-key = name">
+	#[cfg_attr(feature = "sql", sea_orm(primary_key))]</xsl:if>
 	pub {name}: {rs:gtfs-type(type, presence, name, $unique-field-id-map)},
 </xsl:template>
 <!-- #endregion Structs -->
