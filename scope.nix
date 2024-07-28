@@ -47,4 +47,6 @@ makeScope newScope (self: {
 			strictDeps = true;
 		};
 	};
+
+	# gtfs-schedule-sql-schema = self.callPackage ./gtfs-schedule-sql-schema.nix {};
 })
