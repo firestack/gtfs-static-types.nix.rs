@@ -45,10 +45,15 @@
 	<xsl:result-document href="{$out}/generated/schedule.rs" method="text">
 use crate::records::*;
 
+#[cfg(feature = "rustler")]
+use rustler::NifStruct;
+
 /**
  * Container referencing all records contained in a GTFS Schedule dataset
  */
 #[cfg_attr(feature = "debug", derive(Debug))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.Dataset")]
 #[derive(Default)]
 pub struct Dataset {{
 <xsl:for-each select="//records/record">
@@ -205,6 +210,9 @@ pub type <xsl:value-of select="$typeName"/> = <xsl:value-of select="rs:map-gtfs-
 <xsl:template name="records">
 use crate::field_types::*;
 
+#[cfg(feature = "rustler")]
+use rustler::NifStruct;
+
 /* Structs */
 <xsl:apply-templates mode="struct" select="//records/record" />
 </xsl:template>
@@ -221,6 +229,8 @@ use crate::field_types::*;
 #[derive(Clone)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.{rs:struct-name-from-filename(name)}")]
 pub struct {rs:struct-name-from-filename(name)} {{<xsl:apply-templates
 	mode="struct"
 	select="fields/field"

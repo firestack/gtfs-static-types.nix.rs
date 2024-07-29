@@ -10,7 +10,7 @@ default = ["all"]
 # default = ["only-type-definitions"]
 only-type-definitions = []
 
-all = ["debug", "serde", "from-dataset"]
+all = ["debug", "serde", "from-dataset", "rustler"]
 
 # Implement `Debug` for `Records` and `Dataset`
 debug = []
@@ -21,6 +21,9 @@ serde = ["dep:serde"]
 # Feature to parse `Datasets` from directories with the filenames defined in the
 # specification
 from-dataset = ["serde", "dep:csv"]
+
+
+rustler = ["serde", "dep:rustler"]
 
 [[example]]
 name = "read_directory"

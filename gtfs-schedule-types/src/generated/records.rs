@@ -1,6 +1,9 @@
 
 use crate::field_types::*;
 
+#[cfg(feature = "rustler")]
+use rustler::NifStruct;
+
 /* Structs */
 
 /** `agency.txt`
@@ -14,6 +17,8 @@ use crate::field_types::*;
 #[derive(Clone)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.Agency")]
 pub struct Agency {
 	/** Record: __Conditionally Required__
 
@@ -75,6 +80,8 @@ pub struct Agency {
 #[derive(Clone)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.Stops")]
 pub struct Stops {
 	/** Record: __Required__
 
@@ -178,6 +185,8 @@ pub struct Stops {
 #[derive(Clone)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.Routes")]
 pub struct Routes {
 	/** Record: __Required__
 
@@ -269,6 +278,8 @@ pub struct Routes {
 #[derive(Clone)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.Trips")]
 pub struct Trips {
 	/** Record: __Required__
 
@@ -342,6 +353,8 @@ pub struct Trips {
 #[derive(Clone)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.StopTimes")]
 pub struct StopTimes {
 	/** Record: __Required__
 
@@ -457,6 +470,8 @@ pub struct StopTimes {
 #[derive(Clone)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.Calendar")]
 pub struct Calendar {
 	/** Record: __Required__
 
@@ -530,6 +545,8 @@ pub struct Calendar {
 #[derive(Clone)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.CalendarDates")]
 pub struct CalendarDates {
 	/** Record: __Required__
 
@@ -561,6 +578,8 @@ pub struct CalendarDates {
 #[derive(Clone)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.FareAttributes")]
 pub struct FareAttributes {
 	/** Record: __Required__
 
@@ -616,6 +635,8 @@ pub struct FareAttributes {
 #[derive(Clone)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.FareRules")]
 pub struct FareRules {
 	/** Record: __Required__
 
@@ -659,6 +680,8 @@ pub struct FareRules {
 #[derive(Clone)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.Timeframes")]
 pub struct Timeframes {
 	/** Record: __Required__
 
@@ -696,6 +719,8 @@ pub struct Timeframes {
 #[derive(Clone)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.FareMedia")]
 pub struct FareMedia {
 	/** Record: __Required__
 
@@ -727,6 +752,8 @@ pub struct FareMedia {
 #[derive(Clone)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.FareProducts")]
 pub struct FareProducts {
 	/** Record: __Required__
 
@@ -770,6 +797,8 @@ pub struct FareProducts {
 #[derive(Clone)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.FareLegRules")]
 pub struct FareLegRules {
 	/** Record: __Optional__
 
@@ -831,6 +860,8 @@ pub struct FareLegRules {
 #[derive(Clone)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.FareTransferRules")]
 pub struct FareTransferRules {
 	/** Record: __Optional__
 
@@ -886,6 +917,8 @@ pub struct FareTransferRules {
 #[derive(Clone)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.Areas")]
 pub struct Areas {
 	/** Record: __Required__
 
@@ -911,6 +944,8 @@ pub struct Areas {
 #[derive(Clone)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.StopAreas")]
 pub struct StopAreas {
 	/** Record: __Required__
 
@@ -936,6 +971,8 @@ pub struct StopAreas {
 #[derive(Clone)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.Networks")]
 pub struct Networks {
 	/** Record: __Required__
 
@@ -961,6 +998,8 @@ pub struct Networks {
 #[derive(Clone)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.RouteNetworks")]
 pub struct RouteNetworks {
 	/** Record: __Required__
 
@@ -986,6 +1025,8 @@ pub struct RouteNetworks {
 #[derive(Clone)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.Shapes")]
 pub struct Shapes {
 	/** Record: __Required__
 
@@ -1029,6 +1070,8 @@ pub struct Shapes {
 #[derive(Clone)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.Frequencies")]
 pub struct Frequencies {
 	/** Record: __Required__
 
@@ -1072,6 +1115,8 @@ pub struct Frequencies {
 #[derive(Clone)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.Transfers")]
 pub struct Transfers {
 	/** Record: __Conditionally Required__
 
@@ -1133,6 +1178,8 @@ pub struct Transfers {
 #[derive(Clone)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.Pathways")]
 pub struct Pathways {
 	/** Record: __Required__
 
@@ -1218,6 +1265,8 @@ pub struct Pathways {
 #[derive(Clone)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.Levels")]
 pub struct Levels {
 	/** Record: __Required__
 
@@ -1249,6 +1298,8 @@ pub struct Levels {
 #[derive(Clone)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.LocationGroups")]
 pub struct LocationGroups {
 	/** Record: __Required__
 
@@ -1274,6 +1325,8 @@ pub struct LocationGroups {
 #[derive(Clone)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.LocationGroupStops")]
 pub struct LocationGroupStops {
 	/** Record: __Required__
 
@@ -1299,6 +1352,8 @@ pub struct LocationGroupStops {
 #[derive(Clone)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.BookingRules")]
 pub struct BookingRules {
 	/** Record: __Required__
 
@@ -1402,6 +1457,8 @@ pub struct BookingRules {
 #[derive(Clone)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.Translations")]
 pub struct Translations {
 	/** Record: __Required__
 
@@ -1457,6 +1514,8 @@ pub struct Translations {
 #[derive(Clone)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.FeedInfo")]
 pub struct FeedInfo {
 	/** Record: __Required__
 
@@ -1524,6 +1583,8 @@ pub struct FeedInfo {
 #[derive(Clone)]
 #[cfg_attr(feature = "debug", derive(Debug))]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.Attributions")]
 pub struct Attributions {
 	/** Record: __Optional__
 
