@@ -4,6 +4,9 @@ use crate::field_types::*;
 #[cfg(feature = "sql")]
 use sea_orm::entity::prelude::*;
 
+#[cfg(feature = "rustler")]
+use rustler::NifStruct;
+
 /* Structs */
 
 /** `agency.txt`
@@ -19,6 +22,8 @@ use sea_orm::entity::prelude::*;
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
 #[cfg_attr(feature = "sql", sea_orm(table_name="agency.txt"))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.Agency")]
 pub struct Agency {
 	/** Record: __Conditionally Required__
 
@@ -83,6 +88,8 @@ pub struct Agency {
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
 #[cfg_attr(feature = "sql", sea_orm(table_name="stops.txt"))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.Stops")]
 pub struct Stops {
 	/** Record: __Required__
 
@@ -189,6 +196,8 @@ pub struct Stops {
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
 #[cfg_attr(feature = "sql", sea_orm(table_name="routes.txt"))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.Routes")]
 pub struct Routes {
 	/** Record: __Required__
 
@@ -283,6 +292,8 @@ pub struct Routes {
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
 #[cfg_attr(feature = "sql", sea_orm(table_name="trips.txt"))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.Trips")]
 pub struct Trips {
 	/** Record: __Required__
 
@@ -359,6 +370,8 @@ pub struct Trips {
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
 #[cfg_attr(feature = "sql", sea_orm(table_name="stop_times.txt"))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.StopTimes")]
 pub struct StopTimes {
 	/** Record: __Required__
 
@@ -476,6 +489,8 @@ pub struct StopTimes {
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
 #[cfg_attr(feature = "sql", sea_orm(table_name="calendar.txt"))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.Calendar")]
 pub struct Calendar {
 	/** Record: __Required__
 
@@ -552,6 +567,8 @@ pub struct Calendar {
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
 #[cfg_attr(feature = "sql", sea_orm(table_name="calendar_dates.txt"))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.CalendarDates")]
 pub struct CalendarDates {
 	/** Record: __Required__
 
@@ -585,6 +602,8 @@ pub struct CalendarDates {
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
 #[cfg_attr(feature = "sql", sea_orm(table_name="fare_attributes.txt"))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.FareAttributes")]
 pub struct FareAttributes {
 	/** Record: __Required__
 
@@ -643,6 +662,8 @@ pub struct FareAttributes {
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
 #[cfg_attr(feature = "sql", sea_orm(table_name="fare_rules.txt"))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.FareRules")]
 pub struct FareRules {
 	/** Record: __Required__
 
@@ -688,6 +709,8 @@ pub struct FareRules {
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
 #[cfg_attr(feature = "sql", sea_orm(table_name="timeframes.txt"))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.Timeframes")]
 pub struct Timeframes {
 	/** Record: __Required__
 
@@ -727,6 +750,8 @@ pub struct Timeframes {
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
 #[cfg_attr(feature = "sql", sea_orm(table_name="fare_media.txt"))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.FareMedia")]
 pub struct FareMedia {
 	/** Record: __Required__
 
@@ -761,6 +786,8 @@ pub struct FareMedia {
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
 #[cfg_attr(feature = "sql", sea_orm(table_name="fare_products.txt"))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.FareProducts")]
 pub struct FareProducts {
 	/** Record: __Required__
 
@@ -806,6 +833,8 @@ pub struct FareProducts {
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
 #[cfg_attr(feature = "sql", sea_orm(table_name="fare_leg_rules.txt"))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.FareLegRules")]
 pub struct FareLegRules {
 	/** Record: __Optional__
 
@@ -869,6 +898,8 @@ pub struct FareLegRules {
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
 #[cfg_attr(feature = "sql", sea_orm(table_name="fare_transfer_rules.txt"))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.FareTransferRules")]
 pub struct FareTransferRules {
 	/** Record: __Optional__
 
@@ -926,6 +957,8 @@ pub struct FareTransferRules {
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
 #[cfg_attr(feature = "sql", sea_orm(table_name="areas.txt"))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.Areas")]
 pub struct Areas {
 	/** Record: __Required__
 
@@ -954,6 +987,8 @@ pub struct Areas {
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
 #[cfg_attr(feature = "sql", sea_orm(table_name="stop_areas.txt"))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.StopAreas")]
 pub struct StopAreas {
 	/** Record: __Required__
 
@@ -981,6 +1016,8 @@ pub struct StopAreas {
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
 #[cfg_attr(feature = "sql", sea_orm(table_name="networks.txt"))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.Networks")]
 pub struct Networks {
 	/** Record: __Required__
 
@@ -1009,6 +1046,8 @@ pub struct Networks {
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
 #[cfg_attr(feature = "sql", sea_orm(table_name="route_networks.txt"))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.RouteNetworks")]
 pub struct RouteNetworks {
 	/** Record: __Required__
 
@@ -1037,6 +1076,8 @@ pub struct RouteNetworks {
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
 #[cfg_attr(feature = "sql", sea_orm(table_name="shapes.txt"))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.Shapes")]
 pub struct Shapes {
 	/** Record: __Required__
 
@@ -1082,6 +1123,8 @@ pub struct Shapes {
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
 #[cfg_attr(feature = "sql", sea_orm(table_name="frequencies.txt"))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.Frequencies")]
 pub struct Frequencies {
 	/** Record: __Required__
 
@@ -1127,6 +1170,8 @@ pub struct Frequencies {
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
 #[cfg_attr(feature = "sql", sea_orm(table_name="transfers.txt"))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.Transfers")]
 pub struct Transfers {
 	/** Record: __Conditionally Required__
 
@@ -1190,6 +1235,8 @@ pub struct Transfers {
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
 #[cfg_attr(feature = "sql", sea_orm(table_name="pathways.txt"))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.Pathways")]
 pub struct Pathways {
 	/** Record: __Required__
 
@@ -1278,6 +1325,8 @@ pub struct Pathways {
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
 #[cfg_attr(feature = "sql", sea_orm(table_name="levels.txt"))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.Levels")]
 pub struct Levels {
 	/** Record: __Required__
 
@@ -1312,6 +1361,8 @@ pub struct Levels {
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
 #[cfg_attr(feature = "sql", sea_orm(table_name="location_groups.txt"))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.LocationGroups")]
 pub struct LocationGroups {
 	/** Record: __Required__
 
@@ -1340,6 +1391,8 @@ pub struct LocationGroups {
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
 #[cfg_attr(feature = "sql", sea_orm(table_name="location_group_stops.txt"))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.LocationGroupStops")]
 pub struct LocationGroupStops {
 	/** Record: __Required__
 
@@ -1367,6 +1420,8 @@ pub struct LocationGroupStops {
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
 #[cfg_attr(feature = "sql", sea_orm(table_name="booking_rules.txt"))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.BookingRules")]
 pub struct BookingRules {
 	/** Record: __Required__
 
@@ -1473,6 +1528,8 @@ pub struct BookingRules {
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
 #[cfg_attr(feature = "sql", sea_orm(table_name="translations.txt"))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.Translations")]
 pub struct Translations {
 	/** Record: __Required__
 
@@ -1530,6 +1587,8 @@ pub struct Translations {
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
 #[cfg_attr(feature = "sql", sea_orm(table_name="feed_info.txt"))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.FeedInfo")]
 pub struct FeedInfo {
 	/** Record: __Required__
 
@@ -1599,6 +1658,8 @@ pub struct FeedInfo {
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 #[cfg_attr(feature = "sql", derive(DeriveEntityModel))]
 #[cfg_attr(feature = "sql", sea_orm(table_name="attributions.txt"))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.Attributions")]
 pub struct Attributions {
 	/** Record: __Optional__
 

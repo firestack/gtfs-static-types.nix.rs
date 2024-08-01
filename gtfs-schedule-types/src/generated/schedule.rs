@@ -1,10 +1,15 @@
 
 use crate::records::*;
 
+#[cfg(feature = "rustler")]
+use rustler::NifStruct;
+
 /**
  * Container referencing all records contained in a GTFS Schedule dataset
  */
 #[cfg_attr(feature = "debug", derive(Debug))]
+#[cfg_attr(feature = "rustler", derive(NifStruct))]
+#[cfg_attr(feature = "rustler", module = "Gtfs.Schedule.Dataset")]
 #[derive(Default)]
 pub struct Dataset {
 
