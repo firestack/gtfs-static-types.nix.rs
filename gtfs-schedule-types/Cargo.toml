@@ -21,7 +21,7 @@ serde = ["dep:serde"]
 
 # Feature to parse `Datasets` from directories with the filenames defined in the
 # specification
-from-dataset = ["serde", "dep:csv"]
+from-dataset = ["serde", "dep:csv", "dep:thiserror"]
 
 sql = ["dep:sea-orm"]
 
@@ -29,7 +29,7 @@ rustler = ["serde", "dep:rustler"]
 
 [[example]]
 name = "read_directory"
-required-features = ["debug", "from-dataset", "dep:thiserror"]
+required-features = ["debug", "from-dataset"]
 
 
 [dependencies]
