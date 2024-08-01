@@ -26,7 +26,6 @@ rustflags = [
 	"-W", "single_use_lifetimes",
 	"-W", "trivial_casts",
 	"-W", "unreachable_pub",
-	"-W", "unused_crate_dependencies",
 	"-W", "unused_lifetimes",
 	"-W", "unused_qualifications",
 	"-W", "variant_size_differences",
