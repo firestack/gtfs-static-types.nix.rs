@@ -1,6 +1,6 @@
 [build]
 rustflags = [
-	## Allowed Opitons
+	## Allowed Options
 	"-A", "clippy::tabs_in_doc_comments",
 	# TODO: figure out if it's possible to only enable this in the `debug`
 	# feature, or if it's even worth doing
