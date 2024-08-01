@@ -7,8 +7,8 @@ repository = "https://github.com/firestack/gtfs-schedule-types.nix.rs/"
 
 [features]
 # provide only type definitions by default
-default = ["all"]
-# default = ["only-type-definitions"]
+# default = ["all"]
+default = ["only-type-definitions"]
 only-type-definitions = []
 
 all = ["debug", "serde", "from-dataset", "rustler"]
