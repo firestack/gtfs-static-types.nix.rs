@@ -73,8 +73,11 @@
 				checks = self'.packages // {
 					inherit (self'.devShells)
 						default;
+					unchanged-gtfs-schedule-code = (pkgs.runCommand "unchanged-protobuf-code" {} (lib.concatLines [
+						"diff ${self'.packages.gtfs-schedule-generated-rs-src}/generated ${./gtfs-schedule-types/src/generated}"
+					]));
 					unchanged-protobuf-code = (pkgs.runCommand "unchanged-protobuf-code" {} (lib.concatLines [
-						"diff ${self'.packages.gtfs-realtime-proto} ./src/gtfs-realtime.proto"
+						"diff ${self'.packages.gtfs-realtime-proto} ${./gtfs-realtime-types/src/gtfs-realtime.proto}"
 					]));
 				};
 			};
