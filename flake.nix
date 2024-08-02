@@ -73,6 +73,9 @@
 				checks = self'.packages // {
 					inherit (self'.devShells)
 						default;
+					unchanged-protobuf-code = (pkgs.runCommand "unchanged-protobuf-code" {} (lib.concatLines [
+						"diff ${self'.packages.gtfs-realtime-proto} ./src/gtfs-realtime.proto"
+					]));
 				};
 			};
 		};
