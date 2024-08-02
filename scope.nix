@@ -48,5 +48,9 @@ makeScope newScope (self: {
 		};
 	};
 
+	gtfs-realtime-proto = self.callPackage ({ fetchurl }: fetchurl {
+		url = "https://gtfs.org/realtime/gtfs-realtime.proto";
+		hash = "sha256-kiubGHDfAKrDisvVxuDmvlKWBzNI7toGw+MxSoIG3v8=";
+	}) {};
 	# gtfs-schedule-sql-schema = self.callPackage ./gtfs-schedule-sql-schema.nix {};
 })
