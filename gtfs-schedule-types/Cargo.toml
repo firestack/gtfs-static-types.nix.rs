@@ -1,5 +1,5 @@
 [package]
-name = "gtfs-schedule-types"
+name = "gtfs-schedule"
 version = "0.1.0"
 edition = "2021"
 description = "Rust types generated from GTFS Schedule documentation"
