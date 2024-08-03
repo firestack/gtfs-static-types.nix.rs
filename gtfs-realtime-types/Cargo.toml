@@ -3,9 +3,15 @@ name = "gtfs-realtime-types"
 version = "0.1.0"
 edition = "2021"
 
+[features]
+default = []
+
+serde = ["dep:serde"]
+
 [dependencies]
 # bytes = <bytes-version>
 prost = "0.13.1"
+serde = { version = "1.0.204", features = ["derive"], optional = true }
 
 [build-dependencies]
 prost-build = { version = "0.13.1" }

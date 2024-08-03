@@ -2,5 +2,5 @@
 }: fetchurl {
 	name = "gtfs-schedule.html";
 	url = "https://gtfs.org/schedule/reference";
-	hash = "sha256-p4jEGQ5HUTCVhEc+ooa4nZvpBK6xbRkzndbwNPJQBK4=";
+	hash = "sha256-WHeAWOQeAgQV7B5sS/Wgn/MdlzrFQAO55vLrE4TEwu0=";
 }

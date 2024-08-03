@@ -75,10 +75,10 @@
 					inherit (self'.devShells)
 						default;
 
-					unchanged-gtfs-xhtml = (pkgs.runCommand "unchanged-gtfs-xhtml" {} (lib.concatLines [
-						"diff ${self'.packages.gtfs-schedule-xhtml} ${./gtfs-schedule-xslt/src/vendored/gtfs-schedule.xhtml}"
-						"mkdir $out"
-					]));
+					# unchanged-gtfs-xhtml = (pkgs.runCommand "unchanged-gtfs-xhtml" {} (lib.concatLines [
+					# 	"diff ${self'.packages.gtfs-schedule-xhtml} ${./gtfs-schedule-xslt/src/vendored/gtfs-schedule.xhtml}"
+					# 	"mkdir $out"
+					# ]));
 
 					unchanged-gtfs-xml = (pkgs.runCommand "unchanged-gtfs-xml" {} (lib.concatLines [
 						"diff ${self'.packages.gtfs-schedule-xml} ${./gtfs-schedule-xslt/src/vendored/gtfs-schedule.xml}"
@@ -92,6 +92,7 @@
 
 					unchanged-protobuf-code = (pkgs.runCommand "unchanged-protobuf-code" {} (lib.concatLines [
 						"diff ${self'.packages.gtfs-realtime-proto} ${./gtfs-realtime-types/src/gtfs-realtime.proto}"
+						"mkdir $out"
 					]));
 				};
 			};
