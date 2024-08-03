@@ -62,7 +62,11 @@
 						pkgs.html-tidy
 						(pkgs.sqlite.override {interactive = true;})
 						pkgs.protobuf
-					];
+					] ++ (pkgs.lib.optionals pkgs.stdenv.isDarwin [
+							# Additional darwin specific inputs can be set here
+							pkgs.pkg-config
+							pkgs.libiconv
+						]);
 
 					commands = [{
 						help = "develop XSLT with saxon-he";
