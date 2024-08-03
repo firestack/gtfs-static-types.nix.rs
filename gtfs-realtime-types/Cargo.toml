@@ -3,6 +3,9 @@ name = "gtfs-realtime-types"
 version = "0.1.0"
 edition = "2021"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [dependencies]
+# bytes = <bytes-version>
+prost = "0.13.1"
+
+[build-dependencies]
+prost-build = { version = "0.13.1" }
